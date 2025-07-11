@@ -4,12 +4,9 @@
   "description": "Fetch with resilience through multiple proxy agents",
   "main": "dist/fetch-retry-proxy.js",
   "types": "dist/fetch-retry-proxy.d.ts",
-  "files": [
-    "dist"
-  ],
   "scripts": {
-    "build": "tsc",
-    "test": "echo \"No tests specified\" && exit 0"
+    "test": "jest",
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
@@ -20,7 +17,11 @@
     "node-fetch": "^2.6.7"
   },
   "devDependencies": {
+    "@types/jest": "^30.0.0",
     "@types/node-fetch": "^2.6.2",
+    "https-proxy-agent": "^7.0.6",
+    "jest": "^30.0.4",
+    "ts-jest": "^29.4.0",
     "typescript": "^4.0.0"
   },
   "keywords": [
