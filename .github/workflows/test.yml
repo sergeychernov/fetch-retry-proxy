@@ -2,11 +2,9 @@ name: Run Tests
 
 on:
   push:
-    branches:
-      - '**' # Runs on pushes to any branch
+    branches: [ "**" ]
   pull_request:
-    branches:
-      - main # Runs on pull requests targeting main
+    branches: [ "main" ]
 
 jobs:
   test:
@@ -14,11 +12,10 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [16.x, 18.x, 20.x]
+        node-version: [18.x, 20.x, 22.x]
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+    - uses: actions/checkout@v3
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
