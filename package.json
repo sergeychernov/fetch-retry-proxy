@@ -1,9 +1,9 @@
 {
-  "name": "resilient-fetch",
+  "name": "fetch-retry-proxy",
   "version": "1.0.0",
   "description": "Fetch with resilience through multiple proxy agents",
-  "main": "dist/resilient-fetch.js",
-  "types": "dist/resilient-fetch.d.ts",
+  "main": "dist/fetch-retry-proxy.js",
+  "types": "dist/fetch-retry-proxy.d.ts",
   "files": [
     "dist"
   ],
@@ -21,6 +21,7 @@
   "keywords": [
     "fetch",
     "resilient",
+	"retry",
     "proxy",
     "http"
   ],

@@ -1,9 +1,9 @@
-# resilient-fetch
+# fetch-retry-proxy
 
-[![npm version](https://img.shields.io/npm/v/resilient-fetch.svg)](https://www.npmjs.com/package/resilient-fetch)
+[![npm version](https://img.shields.io/npm/v/fetch-retry-proxy.svg)](https://www.npmjs.com/package/fetch-retry-proxy)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-`resilient-fetch` — это легковесный модуль для Node.js, который расширяет `node-fetch`, добавляя отказоустойчивость при работе с прокси. Он позволяет выполнять fetch-запросы через последовательность прокси-агентов, автоматически переключаясь на следующий агент в случае сбоя.
+`fetch-retry-proxy` — это легковесный модуль для Node.js, который расширяет `node-fetch`, добавляя отказоустойчивость при работе с прокси. Он позволяет выполнять fetch-запросы через последовательность прокси-агентов, автоматически переключаясь на следующий агент в случае сбоя.
 
 ## Особенности
 
@@ -15,7 +15,7 @@
 ## Установка
 
 ```bash
-npm install resilient-fetch
+npm install fetch-retry-proxy
 ```
 
 Вам также понадобится пакет для создания агентов, например https-proxy-agent или socks-proxy-agent:
@@ -26,10 +26,10 @@ npm install socks-proxy-agent
 ```
 
 ## Использование
-Вот базовый пример использования resilientFetch со списком прокси-агентов.
+Вот базовый пример использования fetch-retry-proxy со списком прокси-агентов.
 ```
-import { resilientFetch } from 
-'resilient-fetch';
+import { fetchRetryProxy } from 
+'fetch-retry-proxy';
 import { HttpsProxyAgent } from 
 'https-proxy-agent';
 
@@ -71,7 +71,7 @@ async function fetchData() {
 fetchData();
 ```
 ## API
-### resilientFetch(url, options, agents)
+### fetchRetryProxy(url, options, agents)
 Выполняет fetch-запрос с возможностью отката между несколькими прокси-агентами.
 
 - url ( string , обязательный): URL-адрес для запроса.
@@ -93,18 +93,18 @@ const options = {
     json' }
 };
 
-const response = await resilientFetch
+const response =fetchRetryProxy
 ('https://api.example.com/submit', options, 
 agents);
 const result = await response.json();
 console.log(result);
 ```
 ### Использование без прокси
-Если вы передадите пустой массив агентов, resilient-fetch будет вести себя как стандартный node-fetch .
+Если вы передадите пустой массив агентов, fetch-retry-fetch будет вести себя как стандартный node-fetch .
 
 ```
 // Этот вызов эквивалентен fetch(url, options)
-const response = await resilientFetch
+const response = await fetchRetryProxy
 ('https://api.example.com/data', {}, []);
 ```
 ## Как это работает

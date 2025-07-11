@@ -8,7 +8,7 @@ import fetch from 'node-fetch';
  * @param agents - Массив агентов (прокси) для использования.
  * @returns - Promise, который разрешается с ответом от сервера.
  */
-export async function resilientFetch(url: string, options: any, agents: any[]) {
+export async function fetchRetryProxy(url: string, options: any, agents: any[]) {
     let lastError: any = null;
 
     if (agents.length === 0) {
