@@ -49,7 +49,7 @@ async function fetchData() {
 
     try {
         // Выполняем запрос
-        const response = await resilientFetch
+        const response = await fetchRetryProxy
         (url, {}, agents);
 
         if (response.ok) {
