@@ -11,6 +11,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          # Мы должны получить всю историю, чтобы правильно обновлять версию
+          fetch-depth: 0
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
@@ -18,11 +21,22 @@ jobs:
           node-version: '16'
           registry-url: 'https://registry.npmjs.org'
 
-      - name: Install dependencies
-        run: npm install
+      - name: Install dependencies and build
+        run: |
+          npm install
+          npm run build
+      
+      - name: Configure Git
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
-      - name: Build
-        run: npm run build
+      - name: Bump version and push changes
+        run: |
+          npm version patch -m "chore: release v%s"
+          git push --follow-tags
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Publish to npm
         run: npm publish --access public
