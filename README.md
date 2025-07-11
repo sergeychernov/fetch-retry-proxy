@@ -1,3 +1,5 @@
+[English](#fetch-retry-proxy) | [Русский](#перевод-на-русский)
+
 # fetch-retry-proxy
 
 [![npm version](https://img.shields.io/npm/v/fetch-retry-proxy.svg)](https://www.npmjs.com/package/fetch-retry-proxy)
